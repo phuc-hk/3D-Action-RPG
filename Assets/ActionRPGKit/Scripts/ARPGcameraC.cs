@@ -87,10 +87,11 @@ public class ARPGcameraC : MonoBehaviour {
 		
 		//Rotate Target
 		//if(Input.GetButton("Fire1") || Input.GetButton("Fire2") || Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || target.GetComponent<AttackTrigger>() && target.GetComponent<AttackTrigger>().onAttacking || lockOn){
-		if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || target.GetComponent<AttackTriggerC>() && target.GetComponent<AttackTriggerC>().isCasting && !target.GetComponent<AttackTriggerC>().onLocking || lockOn || target.GetComponent<PlayerInputControllerC>().IsMoving()){
-			if(target.GetComponent<StatusC>() && !target.GetComponent<StatusC>().freeze && !GlobalConditionC.freezeAll && !GlobalConditionC.freezePlayer){
+		if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || target.GetComponent<AttackTriggerC>() && target.GetComponent<AttackTriggerC>().isCasting && !target.GetComponent<AttackTriggerC>().onLocking || lockOn || target.GetComponent<PlayerInputControllerC>() && target.GetComponent<PlayerInputControllerC>().IsMoving() || target.GetComponent<MountControllerC>() && target.GetComponent<MountControllerC>().IsMoving())
+        {
+			//if(target.GetComponent<StatusC>() && !target.GetComponent<StatusC>().freeze && !GlobalConditionC.freezeAll && !GlobalConditionC.freezePlayer){
 				target.transform.rotation = Quaternion.Euler(0, x, 0);
-			}
+			//}
 		}
 
 		

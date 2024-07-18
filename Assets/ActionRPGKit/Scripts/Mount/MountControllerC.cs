@@ -89,9 +89,9 @@ public class MountControllerC : MonoBehaviour {
 			Vector3 targetDirection= moveHorizontal * right + moveVertical * forward;
 			
 			//----------------------------------
-			if(moveHorizontal != 0 || moveVertical != 0){
-				transform.rotation = Quaternion.LookRotation(targetDirection.normalized);
-			}
+			//if(moveHorizontal != 0 || moveVertical != 0){
+			//	transform.rotation = Quaternion.LookRotation(targetDirection.normalized);
+			//}
 			//-----------------------------------------------------------------------------
 			if(moveVertical != 0 && walkingSound && !GetComponent<AudioSource>().isPlaying|| moveHorizontal != 0 && walkingSound && !GetComponent<AudioSource>().isPlaying){
 				GetComponent<AudioSource>().clip = walkingSound;
@@ -240,8 +240,13 @@ public class MountControllerC : MonoBehaviour {
 		GlobalConditionC.freezePlayer = false;
 		Destroy(gameObject);
 	}
-	
-	void PlayerMoveTowardsTarget(Vector3 targetPoint){
+
+    public bool IsMoving()
+    {
+        return moveHorizontal != 0 || moveVertical != 0;
+    }
+
+    void PlayerMoveTowardsTarget(Vector3 targetPoint){
 		CharacterController cc = player.GetComponent<CharacterController>();
 		Vector3 offset = targetPoint - player.transform.position;
 		
